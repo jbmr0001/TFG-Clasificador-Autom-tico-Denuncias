@@ -1,0 +1,12 @@
+carpetaCorpus=.\Corpus
+modeloPreentrenado=distilbert-base-uncased
+comentario=Vídeo
+k=3
+numDenunciasPorTipo=-1
+modo=Validacion
+procesamiento=2
+semilla=13
+
+
+
+

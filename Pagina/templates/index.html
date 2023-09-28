@@ -1,0 +1,74 @@
+{% extends 'plantilla.html' %}
+{% block title %}
+    {{ data.titulo }}
+{% endblock %}
+{% block body %}
+    <br>
+    <div class="row text-center">
+        <h1>Escribir Texto</h1>
+    </div>
+
+    <div class="container px-1 px-lg-1 my-1">
+        <div>
+            {% if data.error !="" %}
+                <h3 class="alert alert-danger">Error: {{ data.error }} </h3>
+            {% else %}
+                {% if data.etiqueta !="" %}
+                    <div class="row text-center">
+                    {% if data.score!="" %}
+                        {% if data.etiqueta =="ODIO" %}
+                            <h3 class="alert alert-danger">Etiqueta: {{ data.etiqueta }} Score: {{ data.score }}</h3>
+                        {% else %}
+                            <h3 class="alert alert-success">Etiqueta: {{ data.etiqueta }} Score: {{ data.score }}</h3>
+                        {% endif %}
+                    {% else %}
+                        {% if data.etiqueta =="ODIO" %}
+                            <h3 class="alert alert-danger">Etiqueta: {{ data.etiqueta }}</h3>
+                        {% else %}
+                            <h3 class="alert alert-success">Etiqueta: {{ data.etiqueta }}</h3>
+                        {% endif %}
+                    {% endif %}
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+        <section style="background-color: #F5F5F5;">
+            <form method="post" action="/index.html">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container px-2 px-lg-14">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div>
+
+                            <select class="form-select" aria-label="Default select example" name="modelo">
+                                {% for c in data.listaModelos %}
+                                    <option value="{{ c }}">{{ c }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                    </div>
+                </nav>
+                <div class="container py-5">
+
+                    <div class="form-outline">
+                        <textarea class="form-control" id="textAreaExample2" rows="8" name="texto"></textarea>
+                    </div>
+                    <br>
+                    <div class="row text-center">
+                        <div>
+                            <input class="btn btn-success btn-lg btn-block" type="submit" value="Clasificar"
+                                   name="action1"/>
+                        </div>
+
+
+                    </div>
+                    </br>
+
+                </div>
+            </form>
+        </section>
+    </div>
+
+{% endblock %}
